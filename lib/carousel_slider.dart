@@ -189,8 +189,11 @@ class CarouselSliderState extends State<CarouselSlider>
 
   Widget getGestureWrapper(Widget child) {
     Widget wrapper;
-
-    wrapper = Container(child: child);
+    if (widget.options.height != null) {
+      wrapper = Container(height: widget.options.height, child: child);
+    } else {
+      wrapper = Container(child: child);
+    }
 
     if (true == widget.disableGesture) {
       return NotificationListener(
@@ -249,9 +252,16 @@ class CarouselSliderState extends State<CarouselSlider>
   }
 
   Widget getEnlargeWrapper(Widget? child,
-      {double? width, double? scale, required double itemOffset}) {
+      {double? width,
+      double? scale,
+      double? height,
+      required double itemOffset}) {
     if (widget.options.enlargeStrategy == CenterPageEnlargeStrategy.height) {
-      return SizedBox(child: child, width: width);
+      return SizedBox(
+        child: child,
+        width: width,
+        height: height,
+      );
     }
     if (widget.options.enlargeStrategy == CenterPageEnlargeStrategy.zoom) {
       late Alignment alignment;
@@ -366,9 +376,13 @@ class CarouselSliderState extends State<CarouselSlider>
                   Curves.easeOut.transform(distortionRatio as double);
             }
 
+            final double? height = widget.options.height;
+
             if (widget.options.scrollDirection == Axis.horizontal) {
               return getCenterWrapper(getEnlargeWrapper(child,
-                  scale: distortionValue, itemOffset: itemOffset));
+                  height: height,
+                  scale: distortionValue,
+                  itemOffset: itemOffset));
             } else {
               return getCenterWrapper(getEnlargeWrapper(child,
                   width: distortionValue * MediaQuery.of(context).size.width,

@@ -6,10 +6,7 @@ enum CenterPageEnlargeStrategy { scale, height, zoom }
 
 class CarouselOptions {
   /// Set carousel height and overrides any existing [aspectRatio].
-
-  /// Aspect ratio is used if no height have been declared.
-  ///
-  /// Defaults to 16:9 aspect ratio.
+  final double? height;
 
   /// The fraction of the viewport that each page should occupy.
   ///
@@ -132,6 +129,7 @@ class CarouselOptions {
   final Clip clipBehavior;
 
   CarouselOptions({
+    this.height,
     this.viewportFraction = 0.8,
     this.initialPage = 0,
     this.enableInfiniteScroll = true,
