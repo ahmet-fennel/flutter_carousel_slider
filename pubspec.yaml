@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  expandable_page_view: ^1.0.17
 
 dev_dependencies:
   flutter_test:
