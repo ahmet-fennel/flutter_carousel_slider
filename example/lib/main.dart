@@ -53,6 +53,7 @@ class CarouselDemo extends StatelessWidget {
 class DemoItem extends StatelessWidget {
   final String title;
   final String route;
+
   DemoItem(this.title, this.route);
 
   @override
@@ -217,7 +218,6 @@ class ComplicatedImageDemo extends StatelessWidget {
         child: CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
-            aspectRatio: 2.0,
             enlargeCenterPage: true,
           ),
           items: imageSliders,
@@ -236,7 +236,6 @@ class EnlargeStrategyDemo extends StatelessWidget {
         child: CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
-            aspectRatio: 2.0,
             enlargeCenterPage: true,
             enlargeStrategy: CenterPageEnlargeStrategy.height,
           ),
@@ -255,7 +254,7 @@ class ManuallyControlledSlider extends StatefulWidget {
 }
 
 class _ManuallyControlledSliderState extends State<ManuallyControlledSlider> {
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   void initState() {
@@ -313,7 +312,6 @@ class NoonLoopingDemo extends StatelessWidget {
       body: Container(
           child: CarouselSlider(
         options: CarouselOptions(
-          aspectRatio: 2.0,
           enlargeCenterPage: true,
           enableInfiniteScroll: false,
           initialPage: 2,
@@ -333,7 +331,6 @@ class VerticalSliderDemo extends StatelessWidget {
       body: Container(
           child: CarouselSlider(
         options: CarouselOptions(
-          aspectRatio: 2.0,
           enlargeCenterPage: true,
           scrollDirection: Axis.vertical,
           autoPlay: true,
@@ -385,7 +382,6 @@ class OnDemandCarouselDemo extends StatelessWidget {
           child: CarouselSlider.builder(
         itemCount: 100,
         options: CarouselOptions(
-          aspectRatio: 2.0,
           enlargeCenterPage: true,
           autoPlay: true,
         ),
@@ -408,7 +404,7 @@ class CarouselWithIndicatorDemo extends StatefulWidget {
 
 class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
   int _current = 0;
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   @override
   Widget build(BuildContext context) {
@@ -422,7 +418,6 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicatorDemo> {
             options: CarouselOptions(
                 autoPlay: true,
                 enlargeCenterPage: true,
-                aspectRatio: 2.0,
                 onPageChanged: (index, reason) {
                   setState(() {
                     _current = index;
@@ -491,7 +486,6 @@ class _PrefetchImageDemoState extends State<PrefetchImageDemo> {
         itemCount: images.length,
         options: CarouselOptions(
           autoPlay: true,
-          aspectRatio: 2.0,
           enlargeCenterPage: true,
         ),
         itemBuilder: (context, index, realIdx) {
@@ -515,7 +509,7 @@ class CarouselChangeReasonDemo extends StatefulWidget {
 
 class _CarouselChangeReasonDemoState extends State<CarouselChangeReasonDemo> {
   String reason = '';
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
 
   void onPageChange(int index, CarouselPageChangedReason changeReason) {
     setState(() {
@@ -534,7 +528,6 @@ class _CarouselChangeReasonDemoState extends State<CarouselChangeReasonDemo> {
                 items: imageSliders,
                 options: CarouselOptions(
                   enlargeCenterPage: true,
-                  aspectRatio: 16 / 9,
                   onPageChanged: onPageChange,
                   autoPlay: true,
                 ),
@@ -589,7 +582,6 @@ class KeepPageviewPositionDemo extends StatelessWidget {
           return Container(
               child: CarouselSlider(
             options: CarouselOptions(
-              aspectRatio: 2.0,
               enlargeCenterPage: true,
               pageViewKey: PageStorageKey<String>('carousel_slider'),
             ),
@@ -618,7 +610,6 @@ class MultipleItemDemo extends StatelessWidget {
       body: Container(
           child: CarouselSlider.builder(
         options: CarouselOptions(
-          aspectRatio: 2.0,
           enlargeCenterPage: false,
           viewportFraction: 1,
         ),
@@ -651,7 +642,6 @@ class EnlargeStrategyZoomDemo extends StatelessWidget {
       body: Container(
         child: CarouselSlider(
           options: CarouselOptions(
-            aspectRatio: 2.0,
             enlargeCenterPage: true,
             enlargeStrategy: CenterPageEnlargeStrategy.zoom,
             enlargeFactor: 0.4,
